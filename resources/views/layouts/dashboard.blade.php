@@ -143,6 +143,7 @@
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{!! asset('back') !!}/plugins/apex/apexcharts.min.js"></script>
+    <script src="{!! asset('back') !!}/assets/js/dashboard/dash_2.js"></script>
     <script src="{!! asset('back') !!}/assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <script src="{!! asset('back') !!}/plugins/file-upload/file-upload-with-preview.min.js"></script>

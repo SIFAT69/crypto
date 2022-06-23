@@ -25,7 +25,7 @@ Route::get('/', [MasterController::class, 'index'])->name('welcome');
 Route::get('/link/{id}', [HistoryController::class, 'history_index'])->name('history.index');
 Route::get('/category/{id}', [DappController::class, 'dapps_category'])->name('category.dapps');
 Route::post('/search/', [SearchController::class, 'search_result'])->name('search.result');
-Route::get('/ads/', [AdvertisementController::class, 'ads_click'])->name('ads.click');
+Route::get('/ads/{id}', [AdvertisementController::class, 'ads_click'])->name('ads.click');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/dashboard/dapp/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('dashboard.dapp.category.delete');
 
    Route::get('/dashboard/ads/', [AdvertisementController::class, 'index'])->name('dashboard.ads.index');
-   Route::post('/dashboard/ads/update/', [AdvertisementController::class, 'update'])->name('dashboard.ads.update');
+   Route::post('/dashboard/ads/save/', [AdvertisementController::class, 'save'])->name('dashboard.ads.save');
+   Route::post('/dashboard/ads/update/{id}', [AdvertisementController::class, 'update'])->name('dashboard.ads.update');
+   Route::get('/dashboard/ads/delete/{id}', [AdvertisementController::class, 'delete'])->name('dashboard.ads.delete');
 
  });
 

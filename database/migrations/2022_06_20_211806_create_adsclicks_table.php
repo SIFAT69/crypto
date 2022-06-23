@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('adsclicks', function (Blueprint $table) {
             $table->id();
+            $table->string('ads_id')->nullable();
             $table->string('clicks')->nullable();
             $table->timestamps();
         });

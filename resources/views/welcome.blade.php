@@ -55,7 +55,6 @@
       </div>
 
   </section>
-
   @foreach ($category as $key => $cate)
   <section class="section-two">
       <div class="container">
@@ -69,7 +68,16 @@
                       <div class="item ">
                         @php
                           $dapps = DB::table('dapps')->where('dapp_category', $cate->category)->inRandomOrder()->limit(5)->get();
+                          $ads = DB::table('advertisements')->inRandomOrder()->limit(4)->get();
+                          $props = $ads[rand(1,3)];
                         @endphp
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 text-center">
+                          <a href="{!! route('ads.click', $props->id) !!}">
+                          <img src="{!! asset('uploads') !!}/ads/{{ $props->ads }}" class="img-fluid"  alt="">
+                          </a>
+                        </div>
                       </div>
                       @forelse ($dapps as $key => $dapp)
                         <div class="item ">

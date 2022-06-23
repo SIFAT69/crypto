@@ -63,7 +63,7 @@
     </section>
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
-        <a href="{!! route('ads.click') !!}">
+        <a href="{!! route('ads.click',1) !!}">
         <img src="{!! asset('uploads') !!}/ads/{{ $ads->ads }}" class="img-fluid"  alt="">
         </a>
       </div>

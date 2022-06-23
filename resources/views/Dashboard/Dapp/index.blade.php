@@ -3,8 +3,8 @@
   Dashboard
 @endsection
 @section('dashboard_breadcum')
-  <li class="breadcrumb-item" aria-current="page"><a href="javascript:void(0);">Case Study</a></li>
-  <li class="breadcrumb-item active" aria-current="page"><a href="javascript:void(0);"></a>Category</li>
+  <li class="breadcrumb-item" aria-current="page"><a href="javascript:void(0);">Dapps</a></li>
+  <li class="breadcrumb-item active" aria-current="page"><a href="javascript:void(0);"></a>List</li>
 @endsection
 @section('dashboard_content')
   <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Dapp;
 use App\Models\History;
+use App\Models\Advertisement;
 
 class MasterController extends Controller
 {
