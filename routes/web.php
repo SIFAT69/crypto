@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/dashboard/dapp/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('dashboard.dapp.category.delete');
 
    Route::get('/dashboard/ads/', [AdvertisementController::class, 'index'])->name('dashboard.ads.index');
+   Route::get('/dashboard/ads/all', [AdvertisementController::class, 'all_ads'])->name('dashboard.ads.all');
    Route::post('/dashboard/ads/save/', [AdvertisementController::class, 'save'])->name('dashboard.ads.save');
    Route::post('/dashboard/ads/update/{id}', [AdvertisementController::class, 'update'])->name('dashboard.ads.update');
    Route::get('/dashboard/ads/delete/{id}', [AdvertisementController::class, 'delete'])->name('dashboard.ads.delete');

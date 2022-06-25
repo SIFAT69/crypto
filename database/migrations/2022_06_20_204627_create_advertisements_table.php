@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('ads')->nullable();
             $table->string('link')->nullable();
+            $table->string('owner_id')->nullable();
+            $table->string('click_limits')->nullable();
             $table->timestamps();
         });
     }

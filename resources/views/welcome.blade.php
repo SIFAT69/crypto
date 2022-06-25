@@ -20,7 +20,7 @@
                             @foreach ($favorites as $key => $value)
                               <div class="item">
                                 <a href="{!! route('history.index', $value->id) !!}">
-                                  <div class="img"><img src="{!! asset('uploads') !!}/logo/{{ $value->dapp_logo }}" alt=""></div>
+                                  <div class="img"><img src="{!! asset('uploads') !!}/logo/{{ $value->dapp_logo }}" target="_blank" alt=""></div>
                                 </a>
                                   <div class="text">
                                       <p>{{ $value->dapp_name }}</p>
@@ -68,8 +68,8 @@
                       <div class="item ">
                         @php
                           $dapps = DB::table('dapps')->where('dapp_category', $cate->category)->inRandomOrder()->limit(5)->get();
-                          $ads = DB::table('advertisements')->inRandomOrder()->limit(4)->get();
-                          $props = $ads[rand(1,3)];
+                          $ads = DB::table('advertisements')->where('status', "Active")->inRandomOrder()->limit(4)->get();
+                          $props = $ads[rand(0,3)];
                         @endphp
                       </div>
                       <div class="row">

@@ -9,34 +9,7 @@
 @section('dashboard_content')
   <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
       @include('Alerts.alerts')
-      <a href="#" class="btn btn-primary mb-2 mr-2" data-toggle="modal" data-target="#create">
-          Create Campain
-      </a>
-      <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Create Ads Campain</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          X
-                      </button>
-                  </div>
-                  <form action="{!! route('dashboard.ads.save') !!}" method="post" enctype="multipart/form-data">
-                    @csrf
-                      <div class="modal-body">
-                        <label for="">Image</label>
-                        <input type="file" class="form-control-file mb-3" name="ads">
-                        <label for="">Link</label>
-                        <input type="text" class="form-control mb-3" name="link">
-                      </div>
-                      <div class="modal-footer">
-                          <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
-                          <button type="submit" class="btn btn-success">Save</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
+      
 
       <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
@@ -99,6 +72,8 @@
                                         <br>
                                         <label for="">Link</label>
                                         <input type="text" class="form-control mb-3" name="link" value="{{ $ad->link }}">
+                                        <label for="">Click Ads</label>
+                                        <input type="text" class="form-control mb-3" name="click_limits" value="{{ $ad->click_limits }}">
                                       </div>
                                       <div class="modal-footer">
                                           <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>

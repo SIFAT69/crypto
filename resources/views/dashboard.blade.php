@@ -38,7 +38,7 @@ Dashboard
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                      </div>
                      <div class="">
-                         <p class="w-value">{{ DB::table('adsclicks')->count('clicks') }} Clicks</p>
+                         <p class="w-value">{{ DB::table('adsclicks')->where('owner_id', Auth::id())->count('clicks') }} Clicks</p>
                          <h5 class="">Total Ads Click</h5>
                      </div>
                  </div>
@@ -64,14 +64,11 @@ Dashboard
                   </tr>
               </thead>
               @php
-                // $ads = DB::table('adsclicks')->get();
-                $ads = DB::table('advertisements')->get();
+
+                $ads = DB::table('advertisements')->where('owner_id', Auth::id())->get();
               @endphp
               <tbody>
                 @foreach ($ads as $ad)
-                  {{-- @php
-                   $ads_details = DB::table('advertisements')->where('id', $ad->ads_id)->first();
-                  @endphp --}}
                   <tr>
                     <td>
                       <img src="{!! asset('uploads') !!}/ads/{{ $ad->ads }}" width="80px" alt="">
@@ -81,7 +78,12 @@ Dashboard
                     </td>
 
                     <td>
-                      <small class="badge badge-success">Active</small>
+                      @if ($ad->status == "Active")
+                        <small class="badge badge-success">{{ $ad->status }}</small>
+                      @endif
+                      @if ($ad->status == "Closed")
+                        <small class="badge badge-danger">{{ $ad->status }}</small>
+                      @endif
                     </td>
                     <td>
                       {{ DB::table('adsclicks')->where('ads_id', $ad->id)->sum('clicks') }} Clicks

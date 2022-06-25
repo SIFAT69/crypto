@@ -20,6 +20,17 @@
                     </div>
                 </a>
             </li>
+            @if (Auth::user()->role == "Admin")
+
+            <li class="menu">
+                <a href="{!! route('dashboard.ads.all') !!}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+                        <span>All Ads</span>
+                    </div>
+                </a>
+            </li>
+
             <li class="menu">
                 <a href="#Faqs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -38,7 +49,9 @@
                         <a href="{!! route('dashboard.dapp.index') !!}"> Dapps List </a>
                     </li>
                 </ul>
-            </li>
+              </li>
+
+            @endif
         </ul>
          <div class="shadow-bottom"></div>
 
