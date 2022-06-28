@@ -33,12 +33,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function () {
    Route::get('/dashboard/dapp/', [DappController::class, 'index'])->name('dashboard.dapp.index');
+   Route::get('/dashboard/dapps/list/', [DappController::class, 'usersdapp'])->name('dashboard.dapp.dapps');
    Route::post('/dashboard/dapp/save', [DappController::class, 'store'])->name('dashboard.dapp.store');
    Route::post('/dashboard/dapp/update/{id}', [DappController::class, 'edit'])->name('dashboard.dapp.update');
    Route::get('/dashboard/dapp/delete/{id}', [DappController::class, 'delete'])->name('dashboard.dapp.delete');
    Route::get('/dashboard/dapp/favorite/{id}', [DappController::class, 'add_favorite'])->name('dashboard.dapp.favorite');
 
    Route::get('/dashboard/dapp/category/', [CategoryController::class, 'category'])->name('dashboard.dapp.category');
+   Route::get('/dashboard/dapp/web3/', [CategoryController::class, 'web3'])->name('dashboard.dapp.web3');
    Route::post('/dashboard/dapp/category/save/', [CategoryController::class, 'category_save'])->name('dashboard.dapp.category.save');
    Route::post('/dashboard/dapp/category/update/{id}', [CategoryController::class, 'category_update'])->name('dashboard.dapp.category.update');
    Route::get('/dashboard/dapp/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('dashboard.dapp.category.delete');

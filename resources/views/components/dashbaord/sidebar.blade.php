@@ -13,6 +13,22 @@
                 </a>
             </li>
             <li class="menu">
+                <a href="{!! route('dashboard.dapp.web3') !!}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+                        <span>Web3</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
+                <a href="{!! route('dashboard.dapp.dapps') !!}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg>
+                        <span>Dapps</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu">
                 <a href="{!! route('dashboard.ads.index') !!}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
@@ -43,7 +59,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="Faqs" data-parent="#accordionExample">
                     <li>
-                        <a href="{!! route('dashboard.dapp.category') !!}">Dapps Category</a>
+                        <a href="{!! route('dashboard.dapp.category') !!}">All Web3</a>
                     </li>
                     <li>
                         <a href="{!! route('dashboard.dapp.index') !!}"> Dapps List </a>

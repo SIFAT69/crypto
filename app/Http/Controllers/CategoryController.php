@@ -21,6 +21,13 @@ class CategoryController extends Controller
         'categories' => $categories,
       ]);
     }
+    public function web3()
+    {
+      $categories = Category::where('created_by', Auth::id())->get();
+      return view('Dashboard.Dapp.Category.web3',[
+        'categories' => $categories,
+      ]);
+    }
 
     public function category_save(Request $request)
     {
@@ -28,6 +35,7 @@ class CategoryController extends Controller
         'category' => "required|unique:categories",
       ]);
       $info['category'] = $request->category;
+      $info['created_by'] = Auth::id();
       Category::create($info);
       return back()->with('success', 'You just saved an category.');
     }

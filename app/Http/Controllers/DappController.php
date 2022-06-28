@@ -25,12 +25,21 @@ class DappController extends Controller
         'categories' => $categories,
       ]);
     }
+    public function usersdapp(Request $Request)
+    {
+      $dapps = Dapp::where('created_by', Auth::id())->get();
+      $categories = Category::get();
+      return view('Dashboard.Dapp.users_dapp',[
+        'dapps' => $dapps,
+        'categories' => $categories,
+      ]);
+    }
 
     public function store(Request $request)
     {
       $info = $request->validate([
         'dapp_logo' => "bail|sometimes|file|image|mimes:jpeg,jpg,png,svg|max:3300",
-        'dapp_name' => "bail|required",
+        'dapp_name' => "bail|required|unique:dapps",
         'dapp_link' => "bail|required",
         'dapp_category' => "bail|required",
         'desc' => "bail|required",
@@ -46,8 +55,9 @@ class DappController extends Controller
       $info['dapp_link'] = $request->dapp_link;
       $info['dapp_category'] = $request->dapp_category;
       $info['desc'] = $request->desc;
+      $info['created_by'] = Auth::id();
 
-      Dapp::insert($info);
+      Dapp::create($info);
       return back()->with('success', 'You just listed a dapp on homepage.');
     }
 

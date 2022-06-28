@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category')->nullable();
+            $table->string('created_by')->nullable();
             $table->timestamps();
         });
     }
