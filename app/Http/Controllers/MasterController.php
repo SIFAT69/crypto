@@ -14,7 +14,7 @@ class MasterController extends Controller
     {
       $categories = Category::get();
       $category = Category::limit(4)->latest()->get();
-      $dapps = Dapp::get();
+      $dapps = Dapp::where('status', 'Active')->get();
       $favorites = Dapp::where('favorte_status', 1)->get();
       $history = History::limit(4)->latest()->get();
       return view('welcome',[

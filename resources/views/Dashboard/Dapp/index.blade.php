@@ -9,7 +9,7 @@
 @section('dashboard_content')
   <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
       @include('Alerts.alerts')
-      <a href="#" class="btn btn-primary mb-2 mr-2" data-toggle="modal" data-target="#create">
+      <a href="{!! route('dashboard.dapp.create.step_one') !!}" class="btn btn-primary mb-2 mr-2">
           Add New Dapp
       </a>
       <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

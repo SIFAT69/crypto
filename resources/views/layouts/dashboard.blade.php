@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" type="text/css" href="{!! asset('back') !!}/plugins/table/datatable/datatables.css">
     <link rel="stylesheet" type="text/css" href="{!! asset('back') !!}/plugins/table/datatable/dt-global_style.css">
-
+    <link rel="stylesheet" type="text/css" href="{!! asset('back') !!}/plugins/select2/select2.min.css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <style media="screen">
     .navbar .theme-brand li.theme-logo img {

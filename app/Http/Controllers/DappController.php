@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Models\Dapp;
 use App\Models\Category;
+use App\Models\Dappclick;
+use App\Models\History;
 use Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,13 +39,7 @@ class DappController extends Controller
 
     public function store(Request $request)
     {
-      $info = $request->validate([
-        'dapp_logo' => "bail|sometimes|file|image|mimes:jpeg,jpg,png,svg|max:3300",
-        'dapp_name' => "bail|required|unique:dapps",
-        'dapp_link' => "bail|required",
-        'dapp_category' => "bail|required",
-        'desc' => "bail|required",
-      ]);
+
 
       $dapp_logo = $request->file('dapp_logo');
       $dapp_logo_rename = uniqid().'.'.$dapp_logo->getClientOriginalExtension();
@@ -53,8 +49,12 @@ class DappController extends Controller
       $info['dapp_logo'] = $dapp_logo_rename;
       $info['dapp_name'] = $request->dapp_name;
       $info['dapp_link'] = $request->dapp_link;
-      $info['dapp_category'] = $request->dapp_category;
+      $info['dapp_category'] = $request->web3;
       $info['desc'] = $request->desc;
+      $info['click_limits'] = $request->click_limits;
+      $info['amount'] = $request->amount;
+      $info['package'] = $request->amount;
+      $info['txhash'] = $request->txhash;
       $info['created_by'] = Auth::id();
 
       Dapp::create($info);
@@ -114,5 +114,31 @@ class DappController extends Controller
       return view('all',[
         'dapps' => $dapps,
       ]);
+    }
+
+    public function dapp_create_one(Request $request)
+    {
+      $categories = Category::get();
+      return view('Dashboard.Dapp.create',[
+        'categories' => $categories,
+      ]);
+    }
+
+    public function ads_click(Request $request)
+    {
+      $ads = Dapp::findOrFail($request->id);
+      Dapp::where('id', $request->id)->update(['click_limits' => $ads->click_limits-1]);
+      if ($ads->click_limits <= 1) {
+        Dapp::where('id', $request->id)->update(['status' => "Closed"]);
+      }
+      $info['ads_id'] = $request->id;
+      $info['clicks'] = 1;
+      $info['owner_id'] = $ads->owner_id;
+      Dappclick::create($info);
+
+      $history['dapp_id'] = $request->id;
+      History::create($history);
+
+      return redirect($ads->dapp_link);
     }
 }

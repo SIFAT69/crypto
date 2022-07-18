@@ -53,6 +53,7 @@ Dashboard
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
   <div class="widget-content widget-content-area br-6">
       <div class="table-responsive mb-4 mt-4">
+        <h4 class="ml-3">Banner Ads</h4>
           <table id="zero-config" class="table table-hover" style="width:100%">
               <thead>
                   <tr>
@@ -92,6 +93,66 @@ Dashboard
                        {{ \Carbon\Carbon::parse($ad->created_at)->diffForHumans() }}
                      </td>
 
+                  </tr>
+
+
+                @endforeach
+              </tbody>
+              <tfoot>
+                  <tr>
+                    <th>Banner</th>
+                    <th>Link</th>
+                    <th>Status</th>
+                    <th>Total Clicks</th>
+                    <th>Created at</th>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
+  </div>
+     </div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+  <div class="widget-content widget-content-area br-6">
+      <div class="table-responsive mb-4 mt-4">
+        <h4 >Dapp Ads</h4>
+          <table id="zero-config" class="table table-hover" style="width:100%">
+              <thead>
+                  <tr>
+                      <th>Banner</th>
+                      <th>Link</th>
+                      <th>Status</th>
+                      <th>Total Clicks</th>
+                      <th>Created at</th>
+                  </tr>
+              </thead>
+              @php
+                $ads = DB::table('dapps')->where('created_by', Auth::id())->limit(8)->get();
+              @endphp
+              <tbody>
+                @foreach ($ads as $ad)
+                  <tr>
+                    <td>
+                      <img src="{!! asset('uploads') !!}/logo/{{ $ad->dapp_logo }}" width="80px" alt="">
+                    </td>
+                    <td>
+                      {{ $ad->dapp_link }}
+                    </td>
+
+                    <td>
+                      @if ($ad->status == "Active")
+                        <small class="badge badge-success">{{ $ad->status }}</small>
+                      @endif
+                      @if ($ad->status == "Closed")
+                        <small class="badge badge-danger">{{ $ad->status }}</small>
+                      @endif
+                    </td>
+                    <td>
+                      {{ DB::table('dappclicks')->where('ads_id', $ad->id)->sum('clicks') }} Clicks
+                    </td>
+                    <td>
+                       {{ \Carbon\Carbon::parse($ad->created_at)->diffForHumans() }}
+                     </td>
                   </tr>
 
 

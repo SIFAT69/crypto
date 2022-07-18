@@ -22,10 +22,11 @@ use App\Http\Controllers\{
 */
 
 Route::get('/', [MasterController::class, 'index'])->name('welcome');
-Route::get('/link/{id}', [HistoryController::class, 'history_index'])->name('history.index');
+Route::get('/link/{id}', [DappController::class, 'ads_click'])->name('history.index');
 Route::get('/category/{id}', [DappController::class, 'dapps_category'])->name('category.dapps');
 Route::post('/search/', [SearchController::class, 'search_result'])->name('search.result');
 Route::get('/ads/{id}', [AdvertisementController::class, 'ads_click'])->name('ads.click');
+// Route::get('/dapp/{id}', [DappController::class, 'ads_click'])->name('dapp.click');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +34,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function () {
    Route::get('/dashboard/dapp/', [DappController::class, 'index'])->name('dashboard.dapp.index');
+   Route::get('/dashboard/dapp/step-1/', [DappController::class, 'dapp_create_one'])->name('dashboard.dapp.create.step_one');
    Route::get('/dashboard/dapps/list/', [DappController::class, 'usersdapp'])->name('dashboard.dapp.dapps');
    Route::post('/dashboard/dapp/save', [DappController::class, 'store'])->name('dashboard.dapp.store');
    Route::post('/dashboard/dapp/update/{id}', [DappController::class, 'edit'])->name('dashboard.dapp.update');

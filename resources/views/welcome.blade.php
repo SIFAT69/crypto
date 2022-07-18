@@ -72,6 +72,7 @@
                           $props = $ads[rand(0,3)];
                         @endphp
                       </div>
+
                       <div class="row">
                         <div class="col-md-12 col-sm-12 text-center">
                           <a href="{!! route('ads.click', $props->id) !!}">
