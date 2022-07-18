@@ -46,6 +46,16 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/dashboard/dapp/category/delete/{id}', [CategoryController::class, 'category_delete'])->name('dashboard.dapp.category.delete');
 
    Route::get('/dashboard/ads/', [AdvertisementController::class, 'index'])->name('dashboard.ads.index');
+
+   Route::get('/dashboard/ads/create/step-1/', [AdvertisementController::class, 'create_step_one'])->name('dashboard.ads.create.one');
+   Route::post('/dashboard/ads/create/step-1/ad-details/', [AdvertisementController::class, 'create_step_one_details'])->name('dashboard.ads.create.one.details');
+
+   Route::get('/dashboard/ads/create/step-2/{ads}', [AdvertisementController::class, 'create_step_two'])->name('dashboard.ads.create.two');
+   Route::post('/dashboard/ads/create/step-2/targeting/{ads}', [AdvertisementController::class, 'create_step_two_targeting'])->name('dashboard.ads.create.two.targeting');
+
+   Route::get('/dashboard/ads/create/step-3/{ads}', [AdvertisementController::class, 'create_step_three'])->name('dashboard.ads.create.three');
+   Route::post('/payment', [AdvertisementController::class, 'create_step_three_payment'])->name('dashboard.ads.create.three.payment');
+
    Route::get('/dashboard/ads/all', [AdvertisementController::class, 'all_ads'])->name('dashboard.ads.all');
    Route::post('/dashboard/ads/save/', [AdvertisementController::class, 'save'])->name('dashboard.ads.save');
    Route::post('/dashboard/ads/update/{id}', [AdvertisementController::class, 'update'])->name('dashboard.ads.update');

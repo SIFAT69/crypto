@@ -12,6 +12,8 @@
                     </div>
                 </a>
             </li>
+            @if (Auth::user()->role == "users")
+
             <li class="menu">
                 <a href="{!! route('dashboard.dapp.web3') !!}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -36,6 +38,7 @@
                     </div>
                 </a>
             </li>
+            @endif
             @if (Auth::user()->role == "Admin")
 
             <li class="menu">

@@ -9,7 +9,7 @@
 @section('dashboard_content')
   <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
       @include('Alerts.alerts')
-      
+
 
       <div class="widget-content widget-content-area br-6">
           <div class="table-responsive mb-4 mt-4">
@@ -39,6 +39,9 @@
                           @endif
                           @if ($ad->status == "Closed")
                             <small class="badge badge-danger">{{ $ad->status }}</small>
+                          @endif
+                          @if ($ad->status == "Pending")
+                            <small class="badge badge-warning">{{ $ad->status }}</small>
                           @endif
                         </td>
                         <td>

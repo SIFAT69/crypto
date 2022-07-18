@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title> {{ env('APP_NAME') }} - @yield('dashboard_title') </title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
@@ -19,6 +20,8 @@
     <link href="{!! asset('back') !!}/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
     <link href="{!! asset('back') !!}/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <link href="{!! asset('back') !!}/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('back') !!}/css/components/tabs-accordian/custom-tabs.css" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" type="text/css" href="{!! asset('back') !!}/plugins/table/datatable/datatables.css">
     <link rel="stylesheet" type="text/css" href="{!! asset('back') !!}/plugins/table/datatable/dt-global_style.css">
 
